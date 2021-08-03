@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="img/favicon.ico" rel="shortcut icon">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+</head>
+<body>
+<!-- <div id="wrapper"> -->
+    <!-- <div class="content"> -->
+        <!-- <div id="overlay"></div> -->
+        <div id="overlaySecond"></div>
+        <div class="wrapper">
+            <div class="topLine">
+                <p>
+                    <script language="Javascript">
+                        var dayNames = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+                        var monthNames = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                        var now = new Date();
+                        document.write(dayNames[now.getDay()] + ", " + monthNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear());
+                    </script>
+                </p>
+            </div>
+            <nav class="navbar navbar-expand-md bg-orange navbar-dark">
+                <a class="navbar-brand" href="#">
+                    <div class="logo"><img src="img/logo.png" class="img-responsive" alt="Logo">
+                    </div>
+                </a>
+
+                <div class="navbar navbar-form">
+                    <div class="navbar login">
+                        <div class="login_sign">
+                            <i class="login_signin fa fa-sign-in-alt"></i>
+                            <i class="login_signup fa fa-user-plus"></i>
+                        </div>
+                    </div>
+                    <ul class="nav navbar-nav">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-us"> </span>
+                                EN</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                <a class="dropdown-item" href="#ua"><span class="flag-icon flag-icon-fr"> </span> UA</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <button  type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler"><i class="fas fa-bars"></i></span>
+
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">What's new</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Your collection</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+        <div class="navbar_form_sign_in fadeInDown">
+
+            <div id="formContent">
+
+                Login Form
+                <form class="form-horizontal" action='' method="POST">
+                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+                    <input type="text" id="login_password" class="fadeIn third" name="login" placeholder="password">
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                </form>
+
+                <div id="formFooter">
+                    <a class="underlineHover" href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="navbar_form_sign_up fadeInDown">
+
+            <form class="form-horizontal" action='' method="POST">
+                <fieldset>
+                    <div class="control-group">
+                        <!-- Username -->
+                        <label class="control-label"  for="username">Username</label>
+                        <div class="controls">
+                            <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Username can contain any letters or numbers, without spaces</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- E-mail -->
+                        <label class="control-label" for="email">E-mail</label>
+                        <div class="controls">
+                            <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Please provide your E-mail</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Password-->
+                        <label class="control-label" for="password">Password</label>
+                        <div class="controls">
+                            <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Password should be at least 4 characters</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Password -->
+                        <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+                        <div class="controls">
+                            <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Please confirm password</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-light">Register</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+        <section id="about">
+                <div class="container">
+                    <div class="row">
+                            <div class="col-12 text-center">
+                                <h1>
+                                    Your Recipes<br><span class="colored">In One Place</span>
+                                </h1>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 about">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad aliquid animi
+                                    aperiam aut corporis dicta dolor, doloremque eaque et excepturi facilis harum hic, id ipsum
+                                    laborum laudantium molestias nihil non numquam quibusdam reiciendis rem, repellat
+                                    reprehenderit rerum saepe similique vel vero voluptatem. Architecto asperiores atque cumque
+                                    dolor error expedita odit sed temporibus? Dolore dolorem expedita nobis omnis quis?</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 about">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur eligendi et
+                                    expedita ipsa laborum, necessitatibus nemo officiis optio repudiandae veniam veritatis.
+                                    Aliquam asperiores esse porro similique. Aut corporis magni modi molestiae perspiciatis. Ab
+                                    animi at commodi consequuntur deleniti deserunt eaque est eum id in ipsum iusto libero
+                                    mollitia nam, omnis provident quas repellat sapiente sit temporibus velit vero
+                                    voluptates?</p>
+                            </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="tips">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="tips"><img src="img/tip-img.jpg" class="img-responsive" alt="Logo">
+                        </div>
+                        <h1 class="ribbon">
+                            <span class="text">Tip Of The Day</span>
+                        </h1>
+<!--                         <h1 class="ribbon">
+                            <span class="text2">Check Our Updates Daily</span>
+                        </h1>
+ -->
+                        <div class="tip-box">
+                            <img src="img/quote.png">
+                            <blockquote class="quote-text">
+                                <p id="tip_text"><em>"Store your produce DRY. A little humidity is a good thing for produce - but wet is bad news. Some moisture will keep produce perky; too much moisture can promote mold or mushiness.</em></p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="search">
+            <div class="container">
+                <div class="row">
+                        <div class="col-12 text-center">
+                            <h1>
+                                Find a Recipe
+                            </h1>
+                        </div>                        
+                        <form class="search">
+                          <input
+                            type="text"
+                            class="search__field"
+                            placeholder="Search over 2 million recipes"
+                          />
+                          <button class="btn search__btn">
+                            <i class="fa fa-search search__icon"></i>
+                            <span>Search</span>
+                          </button>
+                        </form>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-8 offset-md-2">
+                        <div class="results">
+                            <ul class="results_list">
+                              <!-- 
+                              <li>
+                                <a class="results__link results__link--active" href="#23456">
+                                  <figure class="results__fig">
+                                    <img src="src/img/test-1.jpg" alt="Test" />
+                                  </figure>
+                                  <div class="results__data">
+                                    <h4 class="results__title">Pasta with Tomato Cream ...</h4>
+                                    <p class="results__publisher">The Pioneer Woman</p>
+                                    <div class="results__user-generated">
+                                      <svg>
+                                        <use href="src/img/icons.svg#icon-user"></use>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>
+                               -->
+                            </ul>
+
+                            <div class="results_pages">
+                              <!-- <button class="btn--inline pagination__btn--prev">
+                                <svg class="search__icon">
+                                  <use href="src/img/icons.svg#icon-arrow-left"></use>
+                                </svg>
+                                <span>Page 1</span>
+                              </button>
+                              <button class="btn--inline pagination__btn--next">
+                                <span>Page 3</span>
+                                <svg class="search__icon">
+                                  <use href="src/img/icons.svg#icon-arrow-right"></use>
+                                </svg>
+                              </button> -->
+                            </div>
+                        </div>
+                    </div>        
+                    <div class="col-12">
+                    <!--    <div class="recipe">
+                             <figure class="recipe__fig">
+                                <img src="http://forkify-api.herokuapp.com/images/Pizza2BQuesadillas2B2528aka2BPizzadillas25292B5002B834037bf306b.jpg" alt="Pizza Quesadillas (aka Pizzadillas)" class="recipe__img">
+                                <h1 class="recipe__title">
+                                    <span>Pizza Quesadillas (aka Pizzadillas)</span>
+                                </h1>
+                            </figure>
+                            <div class="recipe__details">
+                                <div class="recipe__info">
+                                    <i class="far fa-clock recipe__info-icon"></i>
+                                    <span class="recipe__info-data recipe__info-data--minutes">75</span>
+                                    <span class="recipe__info-text"> minutes</span>
+                                </div>
+                                <div class="recipe__info">
+                                    <i class="fas fa-male recipe__info-icon"></i>
+                                    <span class="recipe__info-data recipe__info-data--people">4</span>
+                                    <span class="recipe__info-text"> servings</span>
+                                </div>
+                                 <button class="recipe__love">
+                                    <i class="fa fa-heart-o"></i>
+                                </button>
+                            </div>
+                                <div class="recipe__info-buttons">
+                                    <button class="btn-tiny btn-decrease">
+                                        <i class="fa fa-minus-circle"></i>
+                                    </button>
+                                    <button class="btn-tiny btn-increase">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </div>
+
+
+                            <div class="recipe__ingredients">
+                                    <ul class="recipe__ingredient-list">
+                                        
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">2</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit"></span>
+                                        tortilla
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">1</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">cup</span>
+                                        mozzarella, shredded
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">3</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">tbsp</span>
+                                        pizza sauce
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">16</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit"></span>
+                                        slices pepperoni
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">1</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">tbsp</span>
+                                        sliced black olives
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">3</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">tbsp</span>
+                                        pizza sauce
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">1/2</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">cup</span>
+                                        mozzarella, shredded
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">3</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit"></span>
+                                        slices pepperoni
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">1</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">tbsp</span>
+                                        sliced black olives
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">2</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit"></span>
+                                        tortilla
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">1</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">cup</span>
+                                        mozzarella, shredded
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">4</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">tbsp</span>
+                                        pizza sauce
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">16</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit"></span>
+                                        slices pepperoni
+                                    </div>
+                                </li>
+                                <li class="recipe__item">
+                                    <svg class="recipe__icon">
+                                        <use href="img/icons.svg#icon-check"></use>
+                                    </svg>
+                                    <div class="recipe__count">1</div>
+                                    <div class="recipe__ingredient">
+                                        <span class="recipe__unit">tbsp</span>
+                                        sliced black olives
+
+                                    </div>
+                                </li>
+                                    </ul>
+
+                                 <button class="btn-small recipe__btn--add">
+                                        <svg class="search__icon">
+                                            <use href="img/icons.svg#icon-shopping-cart"></use>
+                                        </svg>
+                                        <span>Add to shopping list</span>
+                                    </button>
+                            </div>
+
+                            <div class="recipe__directions">
+                                <h2 class="heading-2">How to cook it</h2>
+                                <p class="recipe__directions-text">
+                                    This recipe was carefully designed and tested by
+                                    <span class="recipe__by">Closet Cooking</span>. Please check out directions at their website.
+                                </p>
+                                <a class="btn-small recipe__btn" href="http://www.closetcooking.com/2012/11/pizza-quesadillas-aka-pizzadillas.html" target="_blank">
+                                    <span>Directions</span>
+                                    <i class="fa fa-caret-right"></i>
+                                </a>
+                            </div>
+                    </div> -->
+            </div>
+        </section>
+
+        <section id="add">
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-12 text-center">
+                        <h1>
+                            Create a Recipe
+                        </h1>
+                    </div>  
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-6 p-2 p-md-4 recipeName">
+                        <h3>
+							<span>
+								 <input placeholder="Your new recipe name" id="recipeName" class="form-control"
+                                        type="text" value=""/>
+				      		 </span>
+                        </h3>
+                        <hr>
+                        <div class="col-12 ingredients">
+							<span>
+								<p class="mr-1">Ingredients</p>
+							</span>
+                            <i id="btn2" class="fa fa-plus-circle"></i>
+                            <span class="badge badge-secondary">Tap to add new</span>
+                        </div>
+                        <ol class="p-2" id="ingList">
+                            <li class="ingItem"><input type="text" class="ingName" placeholder="New ingredient" value=""><i class="trash far fa-trash-alt"></i></li>
+                        </ol>
+                        <textarea class="form-control" type="text" placeholder="Process of cooking" name="" id="cookingProcess"
+                                  cols="45" rows="5"></textarea>
+
+                        <div class="col-md-12 ">
+                            <input id="add_item" class="btn btn-light m-1" type="submit" value="CREATE">
+                        </div>
+                    </div>
+
+
+                    <div id="recipeList" class="col-xs-10 col-sm-10 col-md-10 col-lg-6 p-2 p-md-4">
+                        <span><h3>Your Collection</h3></span>
+                        <span class="collection_message">is yet to be created</span>
+                            <div class="recipe_container"></div>
+
+<!--            <div class="recipe__info">
+                <i class="fa fa-heart recipe__info-icon"></i>
+                <span class="recipe__info-message"> This recipe is added to the collection below</span>
+            </div> -->
+
+                            <div class="recipe_pagination">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="news_body">
+<!--                             <li class="news_item">
+                                 <h1>Headline</h1>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore itaque, id. Voluptatum totam accusamus suscipit iste sequi sint vitae tenetur ipsam laboriosam officia vel iusto, perspiciatis error nesciunt saepe veritatis!</p>           
+                            </li>
+                            <li class="news_item">
+                                 <h1>Headline</h1>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore itaque, id. Voluptatum totam accusamus suscipit iste sequi sint vitae tenetur ipsam laboriosam officia vel iusto, perspiciatis error nesciunt saepe veritatis!</p>           
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="separator-top">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-5 social">
+                        <ul class=" fs-20 ">
+                            <li><a href="https://www.facebook.com/ivan.dyvak"></a><i class="fab fa-facebook-f"></i></li>
+                            <li><a href=""></a><i class="fab fa-twitter"></i></li>
+                            <li><a href=""></a><i class="fab fa-linkedin"></i></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 text-center ">
+                        <i class="fas fa-book fs-20 "></i>
+                    </div>
+                    <div class="col-5 text-center text-md-right">
+                        <p>Powered by Ivan Dyvak</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+<!--     </div>
+</div> -->
+
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<!--  <script src="js/vendor.js"></script>-->
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/config.js"></script>
+  <script type="module" src="js/search.js"></script>
+  <script type="module" src="js/recipe.js"></script>
+  <script type="module" src="js/recipeView.js"></script>
+  <script type="module" src="js/news.js"></script>
+  <script type="module" src="js/newsView.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<!--  <script src="js/bootstrap.js"></script>-->
+<!-- <script src="js/main.js"></script> -->
+</body>
+</html>
