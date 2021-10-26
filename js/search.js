@@ -330,99 +330,99 @@ const controlRecipe = async () =>{
                     cur.addEventListener("click", ctrlEditItem);
                 })
 
-        //     var ctrlDeleteItem = function(event) {
-        //     var ID;
+            var ctrlDeleteItem = function(event) {
+            var ID;
 
-        //     ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+            ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
-        //     // 1. delete the item from the data structure
-        //     recipeCtrl.deleteItem(ID);
+            // 1. delete the item from the data structure
+            recipeCtrl.deleteItem(ID);
     
     
-        //     // 2. Delete the item from the UI
-        //     UICtrl.deleteListItem(ID);
+            // 2. Delete the item from the UI
+            UICtrl.deleteListItem(ID);
 
-        //             function delItem() {
-        //                 var recipeContainer = document.querySelector('.recipe_container');
-        //                 while (recipeContainer.hasChildNodes()) {
-        //                     recipeContainer.removeChild(recipeContainer.firstChild);
-        //                 }
-        //             }delItem();
-        //             function delButton() {
-        //                 var recipePagination = document.querySelector('.recipe_pagination');
-        //                 while (recipePagination.hasChildNodes()) {
-        //                     recipePagination.removeChild(recipePagination.firstChild);
-        //                 }
-        //             }delButton();
-        //     const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
-        //     let page = 1;
-        //     let resPerPage = 2;
-        //     renderResults (recipeCollection, page, resPerPage);
+                    function delItem() {
+                        var recipeContainer = document.querySelector('.recipe_container');
+                        while (recipeContainer.hasChildNodes()) {
+                            recipeContainer.removeChild(recipeContainer.firstChild);
+                        }
+                    }delItem();
+                    function delButton() {
+                        var recipePagination = document.querySelector('.recipe_pagination');
+                        while (recipePagination.hasChildNodes()) {
+                            recipePagination.removeChild(recipePagination.firstChild);
+                        }
+                    }delButton();
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
     
-        // };
-        //      var ctrlEditItem = function(event) {
+        };
+             var ctrlEditItem = function(event) {
     
-        //     var ID, newItem;
-        //                             console.log('clicked');
+            var ID, newItem;
+                                    console.log('clicked');
 
     
-        //     ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
-        //     console.log(ID);
-        //     newItem = recipeCtrl.editItem(ID);
+            ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+            console.log(ID);
+            newItem = recipeCtrl.editItem(ID);
     
-        //     UICtrl.editListItem(newItem);
+            UICtrl.editListItem(newItem);
     
-        //     document.getElementById('save').addEventListener('click', saveItem);
-        // };
+            document.getElementById('save').addEventListener('click', saveItem);
+        };
     
-        // var saveItem = function (){
+        var saveItem = function (){
     
-        //     var input = UICtrl.getSaveInput();
-        //     recipeCtrl.addSaveItem(input.id, input.name, input.ingredients, input.process);
+            var input = UICtrl.getSaveInput();
+            recipeCtrl.addSaveItem(input.id, input.name, input.ingredients, input.process);
     
-        //     function delItem() {
-        //         var recipeContainer = document.querySelector('.recipe_container');
-        //         while (recipeContainer.hasChildNodes()) {
-        //             recipeContainer.removeChild(recipeContainer.firstChild);
-        //         }
-        //     }delItem();
+            function delItem() {
+                var recipeContainer = document.querySelector('.recipe_container');
+                while (recipeContainer.hasChildNodes()) {
+                    recipeContainer.removeChild(recipeContainer.firstChild);
+                }
+            }delItem();
     
-        //     document.getElementById('overlaySecond').style.display = 'none';
-        //     var itemEditForm = document.querySelector('.item_edit_form');
-        //     itemEditForm.parentNode.removeChild(itemEditForm);
+            document.getElementById('overlaySecond').style.display = 'none';
+            var itemEditForm = document.querySelector('.item_edit_form');
+            itemEditForm.parentNode.removeChild(itemEditForm);
 
-        //     function delButton() {
-        //         var recipePagination = document.querySelector('.recipe_pagination');
-        //         while (recipePagination.hasChildNodes()) {
-        //         recipePagination.removeChild(recipePagination.firstChild);
-        //         }
-        //     }delButton();
+            function delButton() {
+                var recipePagination = document.querySelector('.recipe_pagination');
+                while (recipePagination.hasChildNodes()) {
+                recipePagination.removeChild(recipePagination.firstChild);
+                }
+            }delButton();
 
-        //     const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
-        //     let page = 1;
-        //     let resPerPage = 2;
-        //     renderResults (recipeCollection, page, resPerPage);
-        // };
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
+        };
 
-		// const renderResults = (recipeCollection, page = 1, resPerPage = 2) =>{
-  //               recipeCollection = JSON.parse(localStorage.getItem('recipes'));
-  //               const start = (page - 1) * resPerPage;
-  //               const end = page * resPerPage;
-  //               recipeCollection.slice(start, end).forEach(renderLikedRecipe);
+		const renderResults = (recipeCollection, page = 1, resPerPage = 2) =>{
+                recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+                const start = (page - 1) * resPerPage;
+                const end = page * resPerPage;
+                recipeCollection.slice(start, end).forEach(renderLikedRecipe);
     
-  //               const delBtn = document.querySelectorAll('.btn_delete');
-  //               const delArr = Array.prototype.slice.call(delBtn);
-  //               delArr.forEach(function (cur) {
-  //                   cur.addEventListener("click", ctrlDeleteItem);
-  //               })
-  //               const editBtn = document.querySelectorAll('.fa-edit');
-  //               const editArr = Array.prototype.slice.call(editBtn);
-  //               editArr.forEach(function (cur) {
-  //                   cur.addEventListener("click", ctrlEditItem);
-  //               })
-  //               //render pagination
-  //               renderButtons (page, recipeCollection.length, resPerPage);
-  //       };
+                const delBtn = document.querySelectorAll('.btn_delete');
+                const delArr = Array.prototype.slice.call(delBtn);
+                delArr.forEach(function (cur) {
+                    cur.addEventListener("click", ctrlDeleteItem);
+                })
+                const editBtn = document.querySelectorAll('.fa-edit');
+                const editArr = Array.prototype.slice.call(editBtn);
+                editArr.forEach(function (cur) {
+                    cur.addEventListener("click", ctrlEditItem);
+                })
+                //render pagination
+                renderButtons (page, recipeCollection.length, resPerPage);
+        };
       
         document.querySelector(".recipe_pagination").addEventListener('click', e =>{
                 const btn = e.target.closest('.btn_inline');

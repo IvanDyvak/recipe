@@ -8,7 +8,10 @@ export default class Recipe{
         this.process = process;
         this.year = year;
 	}
+
+
 		async getRecipe(){
+			
 		// try{
 		// 	const res = await axios(`https://api.edamam.com/search?r=${this.id}&app_id=${app_id}&app_key=${key}`);
 		// 	this.label = res.data.label;
@@ -41,10 +44,21 @@ export default class Recipe{
 		likedRecipe (){
 			   let newItem, ID, yearOfPosted, now, months, month, yearPub, year;
 
-            const recipeCollection = localStorage.getItem('recipes')
-                ? JSON.parse(localStorage.getItem('recipes'))
-                : [];
 
+        // if (typeof(Storage) !== "undefined") {
+    
+        //     var recipeCollection = localStorage.getItem('recipes')
+        //         ? JSON.parse(localStorage.getItem('recipes'))
+        //         : [];
+    
+        //     console.log(recipeCollection);
+    
+        //     //Storing recipes Array in Localstorage//
+    
+        //     localStorage.setItem('recipes', JSON.stringify(recipeCollection));
+        // } else {
+        //     alert("Sorry, your browser does not support Web Storage...");
+        // }
 
               function randomRange(min, max) {
                     return (Math.random() * (max - min + 1)) + min
@@ -64,6 +78,9 @@ export default class Recipe{
 				newItem = new Recipe(ID, this.title, this.ingredients, this.instructions, year);
         		console.log(newItem);
 
+	           if (localStorage.getItem('recipeCollection')) {
+            let recipeCollection = JSON.parse(localStorage.getItem('recipeCollection'));
+
                 recipeCollection.push(newItem);
 
                 localStorage.setItem('recipes', JSON.stringify(recipeCollection));
@@ -72,6 +89,22 @@ export default class Recipe{
                 // Return the new element
                 return newItem;
                 // return recipeCollection;
+
+        } else {
+            let recipeCollection = [];
+            localStorage.setItem('recipes', JSON.stringify(recipeCollection));
+
+                recipeCollection.push(newItem);
+
+                localStorage.setItem('recipes', JSON.stringify(recipeCollection));
+                 console.log(recipeCollection);
+
+                // Return the new element
+                return newItem;
+                // return recipeCollection;
+        }
+
+
 
 		} 
 	// getIngredients(){

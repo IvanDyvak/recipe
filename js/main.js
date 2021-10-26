@@ -450,7 +450,17 @@ var controller = (function(recipeCtrl, UICtrl) {
 
 
     // ************************************************************
+        // let body = document.querySelector("body");
 
+        // body.addEventListener("click", someFunc());
+
+        // const someFunc = e => {
+        //     if(e.target.classList.contains("btn-info")) {
+        //       console.log('I was clicked')
+        //     }else{              
+        //         console.log("That's not me")
+        //         }
+        // };
 
 
 

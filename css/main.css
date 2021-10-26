@@ -5,6 +5,7 @@ body{
     color: #fff;
     position: relative;
 }
+
 #overlay{
     position: absolute;
     width: 100%;
@@ -523,7 +524,8 @@ input[type=text], input[type=password] {
   .recipe__info-icon {
     font-size: 1.5rem;
     color: #e07c0d;
-    margin: 0 1rem; }
+    margin: 0 1rem;
+    }
   .recipe__info-data {
     margin-right: .4rem;
     font-weight: 600; }
@@ -538,7 +540,7 @@ input[type=text], input[type=password] {
     font-size: 1.5rem;
      }
     .recipe__info-buttons .btn-tiny{
-      border: none;
+      border: transparent;
       background: transparent;
       color: #e07c0d;
      }
@@ -1087,7 +1089,7 @@ input[type=text]::placeholder {
     text-align: left;
     box-shadow: 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%), 0 5px 5px -3px rgb(0 0 0 / 20%);
     color: #383428;
-    border-radius: 2%;
+    border-radius: 10px;
     background: #fff;
 }
 .item_added:hover{
@@ -1181,11 +1183,18 @@ i.trash{
   background: #fdebd2;
   padding: 2rem 1rem;
 }
+.news_item ul,
+.news_item ol{
+    margin: 0;
+    padding: 0;
+}
 
 #news .news_body{
   color: #272d3c;
   text-align: center;
+  padding: 0;
 }
+
 .news_item{
   margin-bottom: 2rem;
   list-style-type: none;
@@ -1197,14 +1206,17 @@ i.trash{
   content: '';
   display: block;
   position: absolute;
-  top: 0;
+  top: -5px;
   left: 50%;
   width: 50px;
   height: 2px;
   background: black;
   transform: translateX(-50%);
+  transition: all .5s;
 }
-
+.news_item h1:hover:before{
+  width: 150px;
+}
 footer{
     position: relative;
     bottom: 0;

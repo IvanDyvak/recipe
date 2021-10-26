@@ -17,9 +17,3 @@ const renderNews = news =>{
 
 
 renderNews(news);
-
-// const createNews = newsBody =>`
-
-//         <p>${newsBody}</p>	
-
-// `;
